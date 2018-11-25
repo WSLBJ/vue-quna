@@ -1,0 +1,55 @@
+{
+  "ret": true,
+  "data": {
+    "sightsList": [{
+      "id": "3011",
+      "imgUrl": "http://img1.qunarzz.com/sight/p0/1507/36/ce3d2d6c9ab44d67ae68d940b8781829.water.jpg_200x200_0938a8f2.jpg",
+      "title": "北京野生动物园",
+      "comment": "16025条评论",
+      "desc": "亚洲唯一飞行式过山车等你来挑战",
+      "price": "70"
+    }, {
+      "id": "3012",
+      "imgUrl": "http://img1.qunarzz.com/sight/p0/1508/89/895a1b7add84f23faca053ce9e3153db.water.jpg_200x200_99ae30ee.jpg",
+      "title": "北京欢乐谷",
+      "comment": "63086条评论",
+      "desc": "亚洲唯一飞行式过山车等你来挑战",
+      "price": "29.8"
+    }, {
+      "id": "3013",
+      "imgUrl": "http://img1.qunarzz.com/sight/p0/1410/34/f540a04367d06820af4dfeaf0ad40257.water.jpg_200x200_dd14b532.jpg",
+      "title": "故宫",
+      "comment": "324671条评论",
+      "desc": "亚洲唯一飞行式过山车等你来挑战",
+      "price": "20"
+    }, {
+      "id": "3014",
+      "imgUrl": "http://img1.qunarzz.com/sight/p0/1601/f5/f5069b6e5f9488b590.water.jpg_200x200_587c485c.jpg",
+      "title": "德云社相声大会广德楼店",
+      "comment": "644条评论",
+      "desc": "亚洲唯一飞行式过山车等你来挑战",
+      "price": "90"
+    }, {
+      "id": "3015",
+      "imgUrl": "http://img1.qunarzz.com/sight/p0/1603/85/85c883189bf7293390.water.jpg_200x200_3165123d.jpg",
+      "title": "什刹海",
+      "comment": "3278条评论",
+      "desc": "亚洲唯一飞行式过山车等你来挑战",
+      "price": "4.9"
+    }, {
+      "id": "3016",
+      "imgUrl": "http://img1.qunarzz.com/sight/p0/1712/c2/c2d6eb9c771a3df3a3.img.jpg_200x200_3585386c.jpg",
+      "title": "古北水镇",
+      "comment": "8311条评论",
+      "desc": "亚洲唯一飞行式过山车等你来挑战",
+      "price": "140"
+    }, {
+      "id": "3017",
+      "imgUrl": "http://img1.qunarzz.com/sight/p0/1508/2f/e615bc3c8e0cf46d9fb92c58ac305f45.water.jpg_200x200_e4e69a48.jpg",
+      "title": "世界公园",
+      "comment": "4736条评论",
+      "desc": "亚洲唯一飞行式过山车等你来挑战",
+      "price": "80"
+    }]
+  }
+}
