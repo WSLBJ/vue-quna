@@ -6,6 +6,7 @@
              :hotCityList="hotCityList"
              :cityList="cityList"
              ></city-list>
+    <city-sidebar></city-sidebar>
   </div>
 </template>
 
@@ -13,13 +14,15 @@
 import CityHeader from './header'
 import CitySearch from './search'
 import CityList from './cityList'
+import CitySidebar from './sidebar'
 import axios from 'axios'
 export default {
   name: 'city',
   components: {
     CityHeader,
     CitySearch,
-    CityList
+    CityList,
+    CitySidebar
   },
   data () {
     return {

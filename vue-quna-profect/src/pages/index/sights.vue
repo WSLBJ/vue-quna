@@ -121,7 +121,6 @@ export default {
    .item-right
      flex: 1
      .item-title
-       margin-top: .26rem
        height: .44rem
        color: $fontColor
        font-size: .32rem
