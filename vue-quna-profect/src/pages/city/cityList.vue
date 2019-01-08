@@ -20,10 +20,12 @@
           </div>
         </div>
         <div class="cityList">
-          <div class="cityListItem" v-for="(item, index) of cityList" :key="item.id">
+          <div class="cityListItem" v-for="(item, index) of cityList" :key="item.id" :ref="index">
             <h6 class="city-index city-info">{{index}}</h6>
             <div class="city-info" @click="handleHotCityClick"
-                 v-for="(items,index) of item" :key="index">{{items.name}}</div>
+                 v-for="(items,index) of item" :key="index">
+              {{items.name}}
+            </div>
           </div>
         </div>
       </div>
@@ -33,7 +35,7 @@
 
 <script>
 import BScroll from 'better-scroll'
-import { mapState, mapMutations } from 'vuex'
+import {mapMutations, mapState} from 'vuex'
 export default {
   name: 'city-list',
   props: ['hotCityList', 'cityList'],
@@ -47,6 +49,9 @@ export default {
       this.$nextTick(() => {
         this.$router.push('/')
       })
+    },
+    scrollToIndex (item) {
+      this.scroll.scrollToElement(this.$refs[item][0])
     }
   },
   mounted () {
@@ -59,52 +64,72 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
- .wrapper
-   height: 10rem
+  @import "../../assets/stylus/variables.styl"
+  .wrapper
+   height: 20rem
    overflow: hidden
    box-sizing: border-box
    .location-container
-      height: 1.3rem
-      padding-top: .44rem
-      padding-left: .4rem
+      width: 100%
+      height: 1.5rem
       display: flex
       flex-direction: column
       justify-content: space-between
       .area-title
+        height: .6rem
+        line-height: .6rem
         color: #616161
-      .location
+        border-style()/*小标题上下边框*/
+        itemTitleBgColor()/*小标题背景*/
+        padding-left: .4rem
+    .location
         border-radius: .1rem
-        border: .02rem solid #c2c2c2
-        color: #c2c2c2
+        border: .03rem solid $selectCity
         text-align: center
         width: 1.8rem
-        height: .5rem
-        line-height: .5rem
+        height: .6rem
+        line-height: .6rem
+        margin-left: .4rem
+        .location-city
+         color: $selectCity
     .hotCity-container
-      margin-top: .4rem
-      padding-left: .5rem
+      margin-top: .2rem
+      .hotCity-title
+        width: 100%
+        height: .6rem
+        line-height: .6rem
+        border-style()
+        itemTitleBgColor()
+        padding-left: .4rem
     .hotCityList
       width: 6.4rem
       padding-top: .1rem
       margin-left: -.22rem
+      padding-left: .5rem
       display: flex
       flex-direction: row
       justify-content: space-around
       flex-wrap: wrap
       .hotCityListItem
         width: 30%
-        height: .5rem
-        line-height: .5rem
+        height: .6rem
+        line-height: .6rem
         text-align: center
+        border-radius: .1rem
+        border: .03rem solid #c2c2c2
         margin: .2rem 0
       .nowCity
-        border-radius: .1rem
-        border: .02rem solid #c2c2c2
-        color: #c2c2c2
+        border: .03rem solid $selectCity
+        color: $selectCity
         text-align: center
+    .city-index
+      border-style()
+      itemTitleBgColor()
     .city-info
-      width: 200px
-      height: 20px
-      padding: 10px 0
+      width: 100%
+      height: .4rem
+      line-height: .4rem
+      padding: .1rem 0
       color: #212121
+      padding-left: .4rem
 </style>

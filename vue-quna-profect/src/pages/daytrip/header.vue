@@ -15,7 +15,7 @@ export default {
   name: 'daytrip-header',
   methods: {
     handlePrePageClick () {
-      this.$router.go(-1)
+      this.$router.push('/')
     }
   }
 }

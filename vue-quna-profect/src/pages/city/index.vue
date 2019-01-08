@@ -5,8 +5,9 @@
     <city-list
              :hotCityList="hotCityList"
              :cityList="cityList"
+             ref="cityList"
              ></city-list>
-    <city-sidebar></city-sidebar>
+    <city-sidebar :cityList="cityList" @changeLetter="handleChangeLetter"></city-sidebar>
   </div>
 </template>
 
@@ -45,6 +46,9 @@ export default {
     },
     handleGetDataErr () {
       console.log('error')
+    },
+    handleChangeLetter (item) {
+      this.$refs.cityList.scrollToIndex(item)
     }
   },
   created () {

@@ -11,6 +11,8 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import VueLazyload from 'vue-lazyload'
 import 'swiper/dist/css/swiper.css'
 import store from '@/store/'
+/* eslint-disable*/
+import babelPloyfill from 'babel-polyfill'
 FastClick.attach(document.body)
 Vue.config.productionTip = false
 Vue.use(VueAwesomeSwiper)

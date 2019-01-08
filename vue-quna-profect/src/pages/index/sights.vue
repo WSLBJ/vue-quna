@@ -4,7 +4,9 @@
       <transition name="fade">
         <div v-show="isLoading" class="loading">正在加载...</div>
       </transition>
-     <div class="item" v-for="item of sights" :key="item.id">
+     <router-link class="item" v-for="item of sights" :to="'/detail/' + item.id"
+                  :key="item.id"
+                  tag="div">
        <img class="item-img" v-lazy="item.imgUrl" alt="" />
        <div class="item-right">
          <p class="item-title">{{item.title}}</p>
@@ -19,7 +21,7 @@
          </p>
          <p class="item-desc">{{item.desc}}</p>
        </div>
-     </div>
+     </router-link>
     </div>
   </div>
 </template>
@@ -37,6 +39,7 @@ export default {
     return {
       moreSights: [],
       isLoading: false,
+      isFetching: false,
       pageNum: 1
     }
   },
@@ -73,9 +76,12 @@ export default {
       this.isLoading = false
     },
     getListInfo () {
-      axios.get('/api/sightsList.json?city=' + this.city + '&page=' + this.pageNum)
-        .then(this.handleGetListSucc.bind(this))
-        .catch(this.handleGetListErr.bind(this))
+      if (!this.isFetching) {
+        this.isFetching = true
+        axios.get('/api/sightsList.json?city=' + this.city + '&page=' + this.pageNum)
+          .then(this.handleGetListSucc.bind(this))
+          .catch(this.handleGetListErr.bind(this))
+      }
     },
     handleGetListSucc (res) {
       res && (res = res.data)
@@ -84,11 +90,13 @@ export default {
           this.moreSights = this.moreSights.concat(res.data.sightsList)
           this.pageNum += 1
         }
+        this.isFetching = false
       } else {
         this.handleGetListErr()
       }
     },
     handleGetListErr () {
+      this.isFetching = false
       console.log('获取景点失败')
     }
   },
@@ -110,7 +118,7 @@ export default {
    opacity: 0
  .item
    width: 7.26rem
-   height: 3.16rem
+   height: 2.7rem
    border-bottom: 1px solid #e0e0e0
    display: flex
    padding: .24rem

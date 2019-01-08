@@ -5,7 +5,6 @@
        <div class="areaSwitch inland select">国内</div>
        <div class="areaSwitch foreign">国外</div>
      </div>
-     <!--<input class="search" placeholder="输入城市名或拼音">-->
    </header>
 </template>
 

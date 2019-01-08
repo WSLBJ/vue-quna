@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Index from '@/pages/index'
 import City from '@/pages/city'
 import Daytrip from '@/pages/daytrip'
+import Detail from '@/pages/detail'
 
 Vue.use(Router)
 
@@ -20,6 +21,11 @@ export default new Router({
       path: '/daytrip/:id',
       name: 'Daytrip',
       component: Daytrip,
+      props: true
+    }, {
+      path: '/detail/:sightId',
+      name: 'Detail',
+      component: Detail,
       props: true
     }
   ]

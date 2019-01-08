@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <keep-alive>
-      <router-view/>
+      <router-view></router-view>
     </keep-alive>
   </div>
 </template>
@@ -12,4 +12,7 @@ export default {
 }
 </script>
 
-<style></style>
+<style lang="stylus">
+  #app
+    touch-action: none
+</style>
