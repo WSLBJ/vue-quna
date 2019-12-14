@@ -6,16 +6,20 @@
              :hotCityList="hotCityList"
              :cityList="cityList"
              ref="cityList"
-             ></city-list>
+             @scroll="handleCityListScroll"
+             @fixchange="handleFixChange"
+             @fixchangeText="handleFixChangeText"></city-list>
     <city-sidebar :cityList="cityList" @changeLetter="handleChangeLetter"></city-sidebar>
+    <fixed-title ref="fixedTitle"></fixed-title>
   </div>
 </template>
 
 <script>
 import CityHeader from './header'
 import CitySearch from './search'
-import CityList from './cityList'
+import CityList from './cityList/cityList'
 import CitySidebar from './sidebar'
+import FixedTitle from './cityList/fixedTitle'
 import axios from 'axios'
 export default {
   name: 'city',
@@ -23,7 +27,8 @@ export default {
     CityHeader,
     CitySearch,
     CityList,
-    CitySidebar
+    CitySidebar,
+    FixedTitle
   },
   data () {
     return {
@@ -48,7 +53,17 @@ export default {
       console.log('error')
     },
     handleChangeLetter (item) {
+      this.$refs.fixedTitle.setText(item)
       this.$refs.cityList.scrollToIndex(item)
+    },
+    handleCityListScroll (e) {
+      this.$refs.fixedTitle.setShow(!(e.y > 0))
+    },
+    handleFixChange (num) {
+      this.$refs.fixedTitle.setMove(num || 0)
+    },
+    handleFixChangeText (text) {
+      this.$refs.fixedTitle.setText(text)
     }
   },
   created () {

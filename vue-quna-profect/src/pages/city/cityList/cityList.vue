@@ -1,16 +1,16 @@
 <template>
   <div ref="wrapper" class="wrapper">
     <div class="list">
-      <div class="location-container">
-        <h6 class="area-title">您的位置</h6>
+      <div class="location-container" ref="current">
+        <h6 class="area-title" ref="areaTitle">您的位置</h6>
         <div class="location">
           <div class="location-city citySelect" ref="selectCity">
             {{city}}
           </div>
         </div>
       </div>
-      <div class="hotCity-container">
-        <h6 class="hotCity-title">
+      <div class="hotCity-container" ref="hotCity">
+        <h6 class="hotCity-title" ref="hotCityTitle">
           热门城市
         </h6>
         <div class="hotCityList">
@@ -40,6 +40,25 @@ export default {
   name: 'city-list',
   props: ['hotCityList', 'cityList'],
   computed: {
+    areaPositions () {
+      const arr = []
+      const { current, hotCity, areaTitle, hotCityTitle } = this.$refs
+      arr.push({
+        top: current.offsetTop,
+        text: areaTitle.innerText
+      })
+      arr.push({
+        top: hotCity.offsetTop,
+        text: hotCityTitle.innerText
+      })
+      for (let i in this.cityList) {
+        arr.push({
+          top: this.$refs[i][0].offsetTop,
+          text: i
+        })
+      }
+      return arr
+    },
     ...mapState(['city'])
   },
   methods: {
@@ -52,10 +71,33 @@ export default {
     },
     scrollToIndex (item) {
       this.scroll.scrollToElement(this.$refs[item][0])
+    },
+    handleScroll (e) {
+      const y = -e.y
+      let flag = false
+      let letter = ''
+      for (let i = 0; i < this.areaPositions.length; i++) {
+        let position = this.areaPositions[i]
+        if (y > position.top - 30 && y < position.top) {
+          const diff = y - position.top + 30
+          flag = true
+          this.$emit('fixchange', diff)
+          break
+        }
+        if (y >= position.top) {
+          letter = position.text
+        }
+      }
+      this.$emit('fixchangeText', letter)
+      !flag && this.$emit('fixchange')
+      this.$emit('scroll', e)
     }
   },
   mounted () {
-    this.scroll = new BScroll(this.$refs.wrapper)
+    this.scroll = new BScroll(this.$refs.wrapper, {
+      probeType: 3
+    })
+    this.scroll.on('scroll', this.handleScroll.bind(this))
   },
   activated () {
     this.scroll && this.scroll.refresh()
@@ -64,7 +106,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  @import "../../assets/stylus/variables.styl"
+  @import "../../../assets/stylus/variables.styl"
   .wrapper
    height: 20rem
    overflow: hidden
@@ -132,4 +174,6 @@ export default {
       padding: .1rem 0
       color: #212121
       padding-left: .4rem
+      position: relative
+      z-index: 100
 </style>

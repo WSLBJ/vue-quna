@@ -3,7 +3,7 @@
     <div class="banner" @click="showGallary">
       <img class="banner-image" :src="bannerImg">
     </div>
-    <gallary v-show="show" :imgList="imgList"></gallary>
+    <gallary v-show="show" :imgList="imgList" @close="handleGallaryClose"></gallary>
   </div>
 </template>
 
@@ -26,6 +26,9 @@ export default {
   methods: {
     showGallary () {
       this.show = true
+    },
+    handleGallaryClose () {
+      this.show = false
     }
   }
 }

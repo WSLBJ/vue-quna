@@ -59,7 +59,7 @@ export default {
   methods: {
     createScroller () {
       this.scroller = new BScroll('.sights', {
-        probeType: 2
+        probeType: 3
       })
     },
     bindevents () {
@@ -107,7 +107,7 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-  @import "../../assets/stylus/variables.styl";
+  @import "../../assets/stylus/variables.styl"
  .loading
    line-height: .8rem
    text-align: center

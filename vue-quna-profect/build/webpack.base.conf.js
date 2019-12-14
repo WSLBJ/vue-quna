@@ -39,6 +39,7 @@ module.exports = {
       'assets': resolve('src/assets'),
       'store': resolve('src/store'),
       'components': resolve('src/components'),
+      'mixins': resolve('src/mixins')
     }
   },
   module: {

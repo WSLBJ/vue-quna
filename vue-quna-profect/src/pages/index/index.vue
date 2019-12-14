@@ -4,6 +4,7 @@
      <index-swiper :list="swiperInfo"></index-swiper>
      <index-icons :list="iconsInfo"></index-icons>
      <index-sights class="sights" :list="sightsInfo"></index-sights>
+     <download v-show="showDownload">下载条</download>
  </div>
 </template>
 
@@ -12,6 +13,7 @@ import IndexHeader from './header'
 import IndexSwiper from './swiper'
 import IndexIcons from './icons'
 import IndexSights from './sights'
+import Download from './download'
 import { mapState, mapActions } from 'vuex'
 import axios from 'axios'
 import BScroll from 'better-scroll'
@@ -21,7 +23,8 @@ export default {
     IndexHeader,
     IndexSwiper,
     IndexIcons,
-    IndexSights
+    IndexSights,
+    Download
   },
   data () {
     return {
@@ -32,7 +35,8 @@ export default {
   },
   computed: {
     ...mapState({
-      city: 'city'
+      city: 'city',
+      showDownload: 'showDownload'
     })
   },
   methods: {

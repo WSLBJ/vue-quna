@@ -11,5 +11,13 @@
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <script>
+        (function () {
+          let ele = document.documentElement;
+          let designW = 320;
+          let scale = ele.clientWidth / designW;
+          ele.style.fontSize = 50 * scale + 'px';
+        })()
+    </script>
   </body>
 </html>

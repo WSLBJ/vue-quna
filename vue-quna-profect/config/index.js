@@ -16,7 +16,7 @@ module.exports = {
             target: 'http://localhost:8080',  // 接口域名
             pathRewrite: {
                 '/api': '/static'   //需要rewrite重写的,
-            }              
+            }
         }
     },
 
